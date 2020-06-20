@@ -1,0 +1,45 @@
+{
+    "name": "shahariaazam/phplib-github-template",
+    "description": "GitHub template to scaffold any PHP library within a very short time",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shaharia Azam",
+            "email": "mail@shaharia.com"
+        }
+    ],
+    "require": {
+        "php": ">= 7.2",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "shahariaazam/http-client-support": "^1.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpunit/phpunit": "^8.5",
+        "php-http/guzzle6-adapter": "^2.0",
+        "symfony/cache": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ShahariaAzam\\Library\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ShahariaAzam\\Library\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpcs": "./vendor/bin/phpcs --standard=psr2 src/",
+        "php-cs-fixer": "./vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no --path-mode=intersection",
+        "phpunit": "./vendor/bin/phpunit --configuration ./phpunit.xml.dist",
+        "test": [
+            "@phpcs",
+            "@php-cs-fixer",
+            "@phpunit"
+        ]
+    }
+}
